@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Probabilidade de Tubarões</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Habitat Ideal de Tubarões</h1>
+        <p>Data de referência das imagens: **Sábado, 4 de Outubro de 2025**</p>
+        
+        <div class="controls">
+            <label for="shark-select">Escolha a espécie de tubarão:</label>
+            <select name="shark" id="shark-select">
+                <option value="22">Tubarão Tigre (Temperatura Ideal: 22°C)</option>
+                <option value="16">Tubarão Branco (Temperatura Ideal: 16°C)</option>
+                <option value="25">Tubarão Baleia (Temperatura Ideal: 25°C)</option>
+                <option value="10">Tubarão-da-Groenlândia (Temperatura Ideal: 10°C)</option>
+            </select>
+            <button id="generate-btn">Gerar Mapa</button>
+        </div>
+
+        <div id="result-container">
+            <div id="loading" class="hidden">
+                <div class="spinner"></div>
+                <p>Processando... Isso pode levar alguns segundos.</p>
+            </div>
+            <img id="result-image" src="" alt="Mapa de probabilidade aparecerá aqui">
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
