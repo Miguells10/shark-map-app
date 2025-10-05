@@ -11,3 +11,6 @@ static/mapa_*.png
 
 # Arquivos de configuração do VS Code
 .vscode/
+
+# Lista de tarefas pessoal
+To Do List/
