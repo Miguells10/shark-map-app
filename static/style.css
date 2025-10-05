@@ -53,16 +53,21 @@ button:hover {
 #result-container {
     margin-top: 20px;
     min-height: 300px;
+    position: relative;
 }
 
-#result-image {
+#map-canvas {
+    display: block;
+    margin: 0 auto;
     max-width: 100%;
     height: auto;
     border: 1px solid #ddd;
     border-radius: 5px;
+    cursor: crosshair;
 }
 
-/* Loading Spinner */
+
+
 .hidden {
     display: none;
 }

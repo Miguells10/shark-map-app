@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Habitat Ideal de Tubarões</h1>
-        <p>Data de referência das imagens: **Sábado, 4 de Outubro de 2025**</p>
+        <p>Após gerar o mapa, clique em um ponto para traçar a rota mais provável.</p>
         
         <div class="controls">
             <label for="shark-select">Escolha a espécie de tubarão:</label>
@@ -25,9 +25,9 @@
         <div id="result-container">
             <div id="loading" class="hidden">
                 <div class="spinner"></div>
-                <p>Processando... Isso pode levar alguns segundos.</p>
+                <p id="loading-text">Processando...</p>
             </div>
-            <img id="result-image" src="" alt="Mapa de probabilidade aparecerá aqui">
+            <canvas id="map-canvas" class="hidden"></canvas>
         </div>
     </div>
 
