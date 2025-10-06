@@ -10,6 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let mapImage = new Image();
 
     generateBtn.addEventListener('click', async () => {
+        // --- NOVIDADE: Resetar o estado do mapa antes de começar ---
+        mapCtx.clearRect(0, 0, mapCanvas.width, mapCanvas.height); // Limpa qualquer desenho antigo do canvas
+        mapImage.src = ''; // Invalida a imagem antiga para evitar que a rota seja clicável enquanto carrega
+
         const selectedTemp = sharkSelect.value;
         
         loadingText.textContent = "Gerando mapa de probabilidade...";
@@ -84,17 +88,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function drawTrajectory(trajectory) {
-        // 1. Redesenha o mapa original para apagar rotas antigas
         mapCtx.drawImage(mapImage, 0, 0);
 
         if (trajectory && trajectory.length > 1) {
-            // 2. Configura o estilo da linha
-            mapCtx.strokeStyle = '#00FFFF'; // Ciano
+            mapCtx.strokeStyle = '#00FFFF';
             mapCtx.lineWidth = 3;
             mapCtx.shadowColor = 'black';
             mapCtx.shadowBlur = 4;
 
-            // 3. Desenha a rota
             mapCtx.beginPath();
             mapCtx.moveTo(trajectory[0][0], trajectory[0][1]);
             for (let i = 1; i < trajectory.length; i++) {
@@ -102,18 +103,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             mapCtx.stroke();
             
-            // 4. Desenha um ponto de início (círculo verde)
-            const sharkIcon = new Image();
-            sharkIcon.src = '/static/shark_icon.png';
-            sharkIcon.onload = () => {
-                const iconWidth = 80;  // ajuste conforme o tamanho real da imagem
-                const iconHeight = 80;
-                const x = trajectory[0][0] - iconWidth / 2;
-                const y = trajectory[0][1] - iconHeight / 2;
-                mapCtx.drawImage(sharkIcon, x, y, iconWidth, iconHeight);
-            };
+            mapCtx.beginPath();
+            mapCtx.arc(trajectory[0][0], trajectory[0][1], 8, 0, 2 * Math.PI);
+            mapCtx.fillStyle = 'lime';
+            mapCtx.fill();
+            mapCtx.strokeStyle = 'black';
+            mapCtx.lineWidth = 2;
+            mapCtx.stroke();
 
-            // 5. Desenha o ponto final (círculo vermelho)
             const endPoint = trajectory[trajectory.length - 1];
             mapCtx.beginPath();
             mapCtx.arc(endPoint[0], endPoint[1], 8, 0, 2 * Math.PI);

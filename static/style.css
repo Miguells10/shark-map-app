@@ -1,88 +1,261 @@
 /* static/style.css */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+
+/* --- Configurações Globais e Variáveis de Cor --- */
+:root {
+    --color-dark-blue: #0d1a2e;
+    --color-medium-blue: #1e3a5f;
+    --color-light-blue: #3d6cb9;
+    --color-accent-cyan: #00FFFF;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #c2d4ee;
+    --font-primary: 'Poppins', sans-serif;
+}
+
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-dark-blue);
+    color: var(--color-text-secondary);
+}
+
+/* --- Seção Hero (Topo) --- */
+.hero-section {
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(13, 26, 46, 0.8), rgba(13, 26, 46, 1)), url("{{ url_for('static', filename='background_video.mp4') }}"); /* Usando o vídeo como imagem de fundo */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    max-width: 90vw;
+    padding: 20px 5%;
 }
 
-h1 {
-    color: #0056b3;
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    font-weight: 400;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--color-text-primary);
+}
+
+.hero-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    font-weight: 300;
+    margin: 20px 0 30px;
+    max-width: 600px;
+    align-self: center;
+}
+
+.btn {
+    padding: 12px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    margin: 0 10px;
+}
+
+.btn-primary {
+    background-color: var(--color-text-primary);
+    color: var(--color-dark-blue);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent-cyan);
+}
+
+.btn-secondary {
+    border: 1px solid var(--color-text-secondary);
+    color: var(--color-text-secondary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-text-primary);
+    color: var(--color-dark-blue);
+}
+
+/* --- Seções de Conteúdo --- */
+.content-section {
+    background-color: var(--color-medium-blue);
+    padding: 80px 5%;
+    text-align: left;
+}
+
+.mission-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 60px;
+}
+
+.mission-column {
+    flex: 1;
+}
+
+.mission-column h2 {
+    color: var(--color-text-primary);
+    margin-bottom: 20px;
+}
+
+.mission-column ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.mission-column ul li {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.mission-column ul li::before {
+    content: '✓';
+    color: var(--color-accent-cyan);
+    position: absolute;
+    left: 0;
+}
+
+/* --- Seção do Mapa --- */
+.map-container-section {
+    padding: 80px 5%;
+    background-color: var(--color-light-blue);
+    color: var(--color-text-primary);
+    text-align: center;
+}
+
+.map-container-section h2 {
+    font-size: 2.5rem;
 }
 
 .controls {
-    margin: 20px 0;
+    margin: 30px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 15px;
+    flex-wrap: wrap;
+}
+
+.controls label {
+    font-weight: 600;
 }
 
 select, button {
-    padding: 10px 15px;
-    font-size: 16px;
+    padding: 10px 20px;
+    font-size: 1rem;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-text-secondary);
+    background-color: var(--color-medium-blue);
+    color: var(--color-text-primary);
+    font-family: var(--font-primary);
 }
 
 button {
-    background-color: #007bff;
-    color: white;
     cursor: pointer;
     border: none;
-    transition: background-color 0.3s;
+    background-color: var(--color-text-primary);
+    color: var(--color-dark-blue);
+    font-weight: 600;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: var(--color-accent-cyan);
 }
 
 #result-container {
     margin-top: 20px;
     min-height: 300px;
     position: relative;
+    max-width: 1200px; /* Limita a largura do mapa */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #map-canvas {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
+    width: 100%; /* Faz o canvas ser responsivo */
     height: auto;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    cursor: crosshair;
+    border: 2px solid var(--color-medium-blue);
+    border-radius: 8px;
 }
-
-
 
 .hidden {
     display: none;
 }
 
 .spinner {
-    border: 8px solid #f3f3f3;
-    border-top: 8px solid #3498db;
+    border: 8px solid rgba(255, 255, 255, 0.3);
+    border-top: 8px solid var(--color-accent-cyan);
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     animation: spin 1s linear infinite;
-    margin: 20px auto;
+    margin: 50px auto;
 }
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* --- Rodapé --- */
+.footer-section {
+    background-color: var(--color-dark-blue);
+    text-align: center;
+    padding: 40px 5%;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.footer-date {
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin-top: 10px;
 }
