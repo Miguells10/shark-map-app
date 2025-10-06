@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,18 +14,23 @@
 <body>
     <header class="hero-section">
         <nav>
-            <div class="logo">SHARK MAP</div>
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Shark Map Logo" class="logo-img">
+                <div class="logo-text">SHARK MAP</div>
+            </div>
             <ul class="nav-links">
-                <li><a href="#mission">Nossa Missão</a></li>
-                <li><a href="#how-it-works">Como Funciona</a></li>
+                <li><a href="#mission">Our Mission</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
             </ul>
         </nav>
         <div class="hero-content">
-            <h1>Revelando os Padrões Ocultos dos Predadores do Oceano</h1>
-            <p class="subtitle">O Shark Map transforma dados de satélite em insights, revelando onde e por que os tubarões se movem, e como seu movimento mantém o oceano vivo. Explore, Aprenda, Proteja.</p>
+            <h1>Revealing the Hidden Patterns of Ocean Predators</h1>
+            <p class="subtitle">
+                Shark Map transforms satellite data into insights, revealing where and why sharks move, and how their movement keeps the ocean alive. Explore. Learn. Protect.
+            </p>
             <div class="hero-buttons">
-                <a href="#map-section" class="btn btn-primary">LANÇAR O MAPA</a>
-                <a href="#" class="btn btn-secondary">ASSISTA: O QUE É O SHARK MAP</a>
+                <a href="#map-section" class="btn btn-primary">LAUNCH MAP</a>
+                <a href="#" class="btn btn-secondary">WATCH: WHAT IS SHARK MAP</a>
             </div>
         </div>
     </header>
@@ -33,39 +38,43 @@
     <section id="mission" class="content-section">
         <div class="mission-content">
             <div class="mission-column">
-                <h2>NOSSA MISSÃO:</h2>
-                <p>Para proteger o delicado equilíbrio do oceano, precisamos primeiro entender seus predadores mais vitais. Nossa iniciativa combina a visão espacial da NASA com modelagem preditiva avançada para decodificar os segredos do comportamento dos tubarões. Nosso objetivo é responder não apenas onde os tubarões estão, mas por que estão lá e para onde irão.</p>
+                <h2>OUR MISSION:</h2>
+                <p>
+                    To protect the delicate balance of the ocean, we must first understand its most vital predators. Our initiative combines NASA's space-based vision with advanced predictive modeling to decode the secrets of shark behavior. Our goal is to answer not only where sharks are, but why they are there and where they are heading next.
+                </p>
             </div>
             <div class="mission-column">
-                <h2>O PROJETO PERMITE:</h2>
+                <h2>THE PROJECT ENABLES:</h2>
                 <ul>
-                    <li>Previsão de hotspots críticos de forrageamento.</li>
-                    <li>Aplicação de dados preditivos para conservação em tempo real.</li>
-                    <li>Desenvolvimento de tecnologia de rastreamento de nova geração.</li>
+                    <li>Prediction of critical foraging hotspots.</li>
+                    <li>Application of predictive data for real-time conservation.</li>
+                    <li>Development of next-generation tracking technology.</li>
                 </ul>
             </div>
         </div>
     </section>
 
     <section id="map-section" class="map-container-section">
-        <h2>Nosso Modelo Preditivo em Ação</h2>
-        <p class="subtitle">Escolha uma espécie e clique em "Gerar Mapa". Depois, clique em qualquer ponto para traçar a rota de caça mais provável.</p>
+        <h2>Our Predictive Model in Action</h2>
+        <p class="subtitle">
+            Choose a species and click “Generate Map”. Then, click on any point to trace the most likely hunting route.
+        </p>
         
         <div class="controls">
-            <label for="shark-select">Espécie de Tubarão:</label>
+            <label for="shark-select">Shark Species:</label>
             <select name="shark" id="shark-select">
-                <option value="22">Tubarão Tigre (Temp. Ideal: 22°C)</option>
-                <option value="16">Tubarão Branco (Temp. Ideal: 16°C)</option>
-                <option value="25">Tubarão Baleia (Temp. Ideal: 25°C)</option>
-                <option value="10">Tubarão-da-Groenlândia (Temp. Ideal: 10°C)</option>
+                <option value="22">Tiger Shark (Ideal Temp: 22°C)</option>
+                <option value="16">Great White Shark (Ideal Temp: 16°C)</option>
+                <option value="25">Whale Shark (Ideal Temp: 25°C)</option>
+                <option value="10">Greenland Shark (Ideal Temp: 10°C)</option>
             </select>
-            <button id="generate-btn">Gerar Mapa</button>
+            <button id="generate-btn">Generate Map</button>
         </div>
 
         <div id="result-container">
             <div id="loading" class="hidden">
                 <div class="spinner"></div>
-                <p id="loading-text">Processando...</p>
+                <p id="loading-text">Processing...</p>
             </div>
             <canvas id="map-canvas" class="hidden"></canvas>
         </div>
@@ -73,7 +82,7 @@
 
     <footer class="footer-section">
         <p>Discover. Learn. Protect.</p>
-        <p class="footer-date" id="image-date">Dados de Referência: </p>
+        <p class="footer-date" id="image-date">Reference Data: </p>
     </footer>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>

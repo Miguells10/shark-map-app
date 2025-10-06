@@ -1,5 +1,3 @@
-/* static/style.css */
-
 /* --- Configurações Globais e Variáveis de Cor --- */
 :root {
     --color-dark-blue: #0d1a2e;
@@ -30,7 +28,7 @@ body {
 /* --- Seção Hero (Topo) --- */
 .hero-section {
     min-height: 100vh;
-    background-image: linear-gradient(rgba(13, 26, 46, 0.8), rgba(13, 26, 46, 1)), url("{{ url_for('static', filename='background_video.mp4') }}"); /* Usando o vídeo como imagem de fundo */
+    background-image: linear-gradient(rgba(13, 26, 46, 0.8), rgba(13, 26, 46, 1)), url("{{ url_for('static', filename='background_video.mp4') }}");
     background-size: cover;
     background-position: center;
     display: flex;
@@ -48,7 +46,22 @@ nav {
     padding: 20px 0;
 }
 
-.logo {
+/* --- LOGO + TEXTO --- */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-accent-cyan);
+}
+
+.logo-text {
     font-weight: 700;
     font-size: 1.5rem;
     color: var(--color-text-primary);
@@ -92,6 +105,7 @@ nav {
     margin: 20px 0 30px;
     max-width: 600px;
     align-self: center;
+    text-align: center;
 }
 
 .btn {
@@ -175,6 +189,14 @@ nav {
     font-size: 2.5rem;
 }
 
+/* Centraliza o texto de instrução no mapa */
+.map-container-section .subtitle {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
 .controls {
     margin: 30px 0;
     display: flex;
@@ -214,13 +236,13 @@ button:hover {
     margin-top: 20px;
     min-height: 300px;
     position: relative;
-    max-width: 1200px; /* Limita a largura do mapa */
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
 
 #map-canvas {
-    width: 100%; /* Faz o canvas ser responsivo */
+    width: 100%;
     height: auto;
     border: 2px solid var(--color-medium-blue);
     border-radius: 8px;

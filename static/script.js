@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const selectedTemp = sharkSelect.value;
         
-        loadingText.textContent = "Gerando mapa de probabilidade...";
+        loadingText.textContent = "Generating probability map...";
         loadingDiv.classList.remove('hidden');
         mapCanvas.classList.add('hidden');
         generateBtn.disabled = true;
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({ temperature: selectedTemp }),
             });
 
-            if (!response.ok) throw new Error('Falha na resposta do servidor.');
+            if (!response.ok) throw new Error('Fail on the server response');
 
             const data = await response.json();
             
@@ -44,8 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
         } catch (error) {
-            console.error('Erro:', error);
-            alert('Ocorreu um erro ao gerar o mapa.');
+            console.error('Error:', error);
+            alert('An error occurred when generating the map.');
             loadingDiv.classList.add('hidden');
             generateBtn.disabled = false;
         }
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     mapCanvas.addEventListener('click', async (event) => {
         if (!mapImage.src || mapImage.src === '') {
-            alert("Primeiro, gere um mapa de probabilidade.");
+            alert("First, generate a probability map.");
             return;
         }
 
@@ -64,8 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const x = (event.clientX - rect.left) * scaleX;
         const y = (event.clientY - rect.top) * scaleY;
 
-        loadingText.textContent = "Calculando a rota mais provável...";
-        loadingDiv.classList.remove('hidden');
+        //loadingText.textContent = "Calculando a rota mais provável...";
+        //loadingDiv.classList.remove('hidden');
 
         try {
             const response = await fetch('/trace_route', {
@@ -80,10 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
             drawTrajectory(data.trajectory);
 
         } catch (error) {
-            console.error('Erro ao traçar rota:', error);
-            alert('Ocorreu um erro ao calcular a rota.');
+            console.error('Error when tracing the route:', error);
+            alert('An error occurred when tracing the route.');
         } finally {
-            loadingDiv.classList.add('hidden');
+            //loadingDiv.classList.add('hidden');
         }
     });
 
