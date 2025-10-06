@@ -6,7 +6,6 @@ A web app built with Flask and Python to explore and predict where sharks are mo
 ## About This Project
 
 Shark Map lets you peek into the ocean world using satellite data. It looks at things like sea surface temperature and chlorophyll (basically how much food is around) to create a “probability map” of where sharks might be.
-
 Pick a shark species, see its favorite spots, and click on the map to see the most likely path it would take to hunt. It’s interactive, visual, and kind of like giving yourself a mini ocean adventure from your browser.
 
 **Built With:**
