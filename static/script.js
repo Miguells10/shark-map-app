@@ -88,37 +88,40 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function drawTrajectory(trajectory) {
-        mapCtx.drawImage(mapImage, 0, 0);
+    mapCtx.drawImage(mapImage, 0, 0);
 
-        if (trajectory && trajectory.length > 1) {
-            mapCtx.strokeStyle = '#00FFFF';
-            mapCtx.lineWidth = 3;
-            mapCtx.shadowColor = 'black';
-            mapCtx.shadowBlur = 4;
+    if (trajectory && trajectory.length > 1) {
+        mapCtx.strokeStyle = '#00FFFF';
+        mapCtx.lineWidth = 3;
+        mapCtx.shadowColor = 'black';
+        mapCtx.shadowBlur = 4;
 
-            mapCtx.beginPath();
-            mapCtx.moveTo(trajectory[0][0], trajectory[0][1]);
-            for (let i = 1; i < trajectory.length; i++) {
-                mapCtx.lineTo(trajectory[i][0], trajectory[i][1]);
-            }
-            mapCtx.stroke();
-            
-            mapCtx.beginPath();
-            mapCtx.arc(trajectory[0][0], trajectory[0][1], 8, 0, 2 * Math.PI);
-            mapCtx.fillStyle = 'lime';
-            mapCtx.fill();
-            mapCtx.strokeStyle = 'black';
-            mapCtx.lineWidth = 2;
-            mapCtx.stroke();
+        mapCtx.beginPath();
+        mapCtx.moveTo(trajectory[0][0], trajectory[0][1]);
+        for (let i = 1; i < trajectory.length; i++) {
+            mapCtx.lineTo(trajectory[i][0], trajectory[i][1]);
+        }
+        mapCtx.stroke();
+        
+        // Ponto inicial (verde)
+        mapCtx.beginPath();
+        mapCtx.arc(trajectory[0][0], trajectory[0][1], 15, 0, 2 * Math.PI); // Aumentado de 8 para 15
+        mapCtx.fillStyle = 'lime';
+        mapCtx.fill();
+        mapCtx.strokeStyle = 'black';
+        mapCtx.lineWidth = 2;
+        mapCtx.stroke();
 
-            const endPoint = trajectory[trajectory.length - 1];
-            mapCtx.beginPath();
-            mapCtx.arc(endPoint[0], endPoint[1], 8, 0, 2 * Math.PI);
-            mapCtx.fillStyle = 'red';
-            mapCtx.fill();
-            mapCtx.strokeStyle = 'black';
-            mapCtx.lineWidth = 2;
-            mapCtx.stroke();
+        // Ponto final (vermelho)
+        const endPoint = trajectory[trajectory.length - 1];
+        mapCtx.beginPath();
+        mapCtx.arc(endPoint[0], endPoint[1], 15, 0, 2 * Math.PI); // Aumentado de 8 para 15
+        mapCtx.fillStyle = 'red';
+        mapCtx.fill();
+        mapCtx.strokeStyle = 'black';
+        mapCtx.lineWidth = 2;
+        mapCtx.stroke();
         }
     }
+
 });
